@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.net.URL;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class Tests {
+
+
+    @BeforeEach
+    public void createInstance(){
+
+    }
+
+    @Test
+    public void test1(){
+	try {
+	    String username = "customer";
+	    password password = "password";
+	    Scanner webpage = new Scanner(new URL("https://pages.cs.wisc.edu/~elan/project-four-bg/graupe_Front_End_2/FrontEndInterface/CGIFiles/Login.cgi?Username="+ username +"&Password="+ password +"").openStream());
+	    while(webpage.hasNextLine())
+		System.out.println(webpage.nextLine());
+	}
+	catch(Exception e) {
+
+	}
+	    
+    }
+
+    @Test
+    public void test2(){
+
+    }
+
+    @Test
+    public void test3(){
+
+    }
+    
+    
+}

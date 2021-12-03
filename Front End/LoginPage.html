@@ -1,0 +1,51 @@
+<!
+Name: Cameron Berhow
+Email: cberhow@wisc.edu
+Team: BG
+Role: Front End Developer 1
+TA: Brianna
+Lecturer: Florian
+>
+<!DOCTYPE html> 
+<html>
+<head>
+<title>Computer Repair - Sign In</title>
+
+<script>
+function buttonClicked(){
+	let username = document.getElementById("username").value;
+	let password = document.getElementById("password").value;
+
+	var request = new XMLHttpRequest();
+	request.withCredentials = true;
+
+	request.addEventListener("readystatechange", function() {
+		console.log(this.responseText);
+		userInfo = JSON.parse(this.responseText) // convert JSON to java object
+		document.cookie = "userID="+userInfo["userID"]; // Store userID in cookie
+		if(userInfo["isAdmin"] === "true"){
+			window.location = "AdminPage.html"
+		}else{
+			window.location = "CustomerPage.html"
+		}    
+	});
+xhr.open("POST", "https://pages.cs.wisc.edu/~elan/project-four-bg/graupe_Front_End_2/FrontEndInterface/CGIFiles/Login.cgi?Username="+ username +"&Password="+ password +"");
+
+xhr.send();
+}
+</script>
+
+</head>
+<body>
+
+<h1>Welcome.  Please Sign In</h1>
+Username:
+<input type="text" id="username"></input>
+<br>
+Password:
+<input type="text" id="password"></input>
+<br>
+<button type="submit" onclick="buttonClicked">Login</button>
+<button type="button" onclick="window.location.href = 'newUserPage.html';">Create Account</button>
+</body>
+</html>

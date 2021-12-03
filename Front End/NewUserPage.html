@@ -1,0 +1,64 @@
+<!
+Name: Cameron Berhow
+Email: cberhow@wisc.edu
+Team: BG
+Role: Front End Developer 1
+TA: Brianna
+Lecturer: Florian
+>
+<!DOCTYPE html> 
+<html>
+<head>
+<title>Computer Repair - Create Account</title>
+
+<script>
+function buttonClicked(){
+let firstName = document.getElementById("firstName").value;
+let lastName = document.getElementById("lastName").value;
+let emailAddress = document.getElementById("emailAddress").value; 
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
+let isAdmin = document.getElementById("isAdmin").value;
+
+var request = new XMLHttpRequest();
+request.withCredentials = true;
+
+request.addEventListener("readystatechange", function() {
+		userInfo = JSON.parse(this.responseText)
+		document.cookie = "userID="+userInfo["userID"];
+		console.log(userInfo["isAdmin"]);
+		if(userInfo["isAdmin"] === "true"){
+			window.location = "OpenTickets.html"
+		}else{
+			 window.location = "MyTickets.html"
+		}
+	}
+	});
+
+	request.open("POST", "SignUp.cgi?Username="+ username +"&Password="+ password  +"&firstName="+ firstName +"&lastName="+ lastName +"&emailAddress="+ emailAddress +"&isAdmin="+ isAdmin);
+
+	request.send();
+}
+</script>
+
+</head>
+<body>
+<h1>Welcome.  Please create your account.</h1>
+Username:
+<input type="text" id="username"></input>
+<br>
+Password:
+<input type="text" id="password"></input>
+<br>
+Name:
+<input type="text" id="name"></input>
+<br>
+Email:
+<input type="text" id="contactInfo"></input>
+<br>
+Admin:
+<input type="checkbox" id="isAdmin"></input>
+<br>
+<button onclick="buttonClicked()">Create Account</button>
+</body>
+</html>
