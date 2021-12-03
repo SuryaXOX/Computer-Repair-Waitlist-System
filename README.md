@@ -1,1 +1,5 @@
 # Computer-Repair-Waitlist-System
+
+This project focuses on developing an app to create and keep track of computer repair tickets. The app will offer both admin and customer access, where customers can login to create a ticket and track a ticket, and administrators can view all active tickets and mark them as fulfilled. This application could be used by a company’s IT department in order to keep track of complaints and computer repairs.
+
+The project will use two hash tables. One hash table will contain users. Each user can be looked up by their username, and their file will contain their password, name, contact information, a boolean indicating whether or not they are an admin, and a list of all of id’s corresponding to all their tickets. The other hash table will contain a list of tickets. Each ticket can be looked up by its ID, and its file will contain the username of the user who made the ticket, the title and content of the ticket, and a boolean to indicate whether the ticket has been resolved.
